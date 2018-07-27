@@ -18,6 +18,45 @@ function githubStore(state = { widgetList: [] }, action) {
       const s = { widgetList: [...state.widgetList, widgetData] };
       return s;
     }
+    case 'ADD_USER': {
+      const widgetData = Object.assign({}, action.widgetData);
+      widgetData.type = 'ADD_USER';
+      const s = { widgetList: [...state.widgetList, widgetData] };
+      return s;
+    }
+    case 'SUBMIT_USER': {
+      const widgetData = state.widgetList.pop();
+      widgetData.sucessMsg = action.widgetData.sucessMsg;
+      widgetData.type = 'SUBMIT_USER';
+      const s = { widgetList: [...state.widgetList, widgetData] };
+      return s;
+    }
+    case 'CREATE_ISSUE': {
+      const widgetData = Object.assign({}, action.widgetData);
+      widgetData.type = 'CREATE_ISSUE';
+      const s = { widgetList: [...state.widgetList, widgetData] };
+      return s;
+    }
+    case 'SUBMIT_ISSUE': {
+      const widgetData = state.widgetList.pop();
+      widgetData.sucessMsg = action.widgetData.sucessMsg;
+      widgetData.type = 'SUBMIT_ISSUE';
+      const s = { widgetList: [...state.widgetList, widgetData] };
+      return s;
+    }
+    case 'GET_ISSUES': {
+      const widgetData = Object.assign({}, action.widgetData);
+      widgetData.type = 'GET_ISSUES';
+      const s = { widgetList: [...state.widgetList, widgetData] };
+      return s;
+    }
+    case 'GET_ISSUE_GIT': {
+      const widgetData = state.widgetList.pop();
+      widgetData.sucessMsg = action.widgetData.sucessMsg;
+      widgetData.type = 'GET_ISSUE_GIT';
+      const s = { widgetList: [...state.widgetList, widgetData] };
+      return s;
+    }
     default: {
       return state;
     }

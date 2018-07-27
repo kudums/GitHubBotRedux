@@ -2,7 +2,7 @@ import recastCall from './service';
 import store from '../utility/store';
 import './view';
 
-function createRecastCall(textByUser) {
+export function createRecastCall(textByUser) {
   recastCall(textByUser).then(res => {
     const repoName = res.results.entities.repository[0].value;
 
@@ -10,8 +10,6 @@ function createRecastCall(textByUser) {
       type: 'CREATE_REPO',
       widgetData: { name: repoName, userEntry: textByUser },
     });
-    //return repoName;
-    // CreateRepoView.createRepoUI(repoName);
   });
 }
 
@@ -35,7 +33,7 @@ $(document).on('click', 'button.createRepositoryOnGithub', function() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'token 035ed1f9695f1694594fcfacc0633805e48437c6',
+        Authorization: 'token 80834174aa9d716356af65f56b771e68921b8876',
       },
       body: JSON.stringify({
         name: repositoryName,
@@ -54,8 +52,6 @@ $(document).on('click', 'button.createRepositoryOnGithub', function() {
                 sucessMsg: response.name + ' got created sucessfully!!',
               },
             });
-            document.getElementById('repoNameInpop').innerHTML =
-              repoName + ' got created sucessfully!!';
             console.log(repoName);
           })
           .catch(function() {
@@ -68,4 +64,4 @@ $(document).on('click', 'button.createRepositoryOnGithub', function() {
   }
 });
 
-export default createRecastCall;
+//export default createRecastCall;

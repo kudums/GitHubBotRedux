@@ -7,8 +7,8 @@ function createHTMLElement(html) {
 }
 
 function createRepoTemplateHtml(recastData) {
-  const creaetReopTemplateTxt = ` <div class="border" id="createRepo">
-<div class="card card-body" style="content: \e003">
+  const creaetReopTemplateTxt = ` <div class="border container tab-pane" aria-labelledby="pills-home-tab" id="createRepo">
+<div class="card card-body" role="tabpanel" aria-labelledby="pills-home-tab" style="content: \e003">
     <form>
     <div class="form-group row">
             <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Repository Name :</label>
@@ -47,7 +47,7 @@ function createRepoTemplateHtml(recastData) {
 }
 
 function createRepoResultTemplateHtml(gitHubData) {
-  const creaetRepoResultTemplateTxt = ` <div class="border" id="createRepo">
+  const creaetRepoResultTemplateTxt = ` <div class="border container tab-pane" aria-labelledby="pills-home-tab" id="createRepo">
 <div class="card card-body" style="content: \e003">
     <form>
     <div class="form-group row">
@@ -82,6 +82,7 @@ function createRepoResultTemplateHtml(gitHubData) {
 }
 
 store.subscribe(() => {
+  $('#contentDiv').empty();
   store.getState().widgetList.forEach(widgetData => {
     if (widgetData.type === 'CREATE_REPO') {
       document.querySelector('#contentDiv').appendChild(createRepoTemplateHtml(widgetData));
